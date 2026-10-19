@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MK Learning Hub 2027 – Supplier Booking Form</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b2f8f;--navy-d:#07205f;--yellow:#ffd21f;--ink:#1b2233;--mute:#5d6678;--line:#d5dbe8;--bg:#f2f5fb;--card:#fff;--err:#b3261e;--ok:#1b7a43}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:var(--navy);color:#fff;padding:28px 20px 24px;border-bottom:6px solid var(--yellow)}
+.wrap{max-width:820px;margin:0 auto}
+.brand{font-weight:800;font-size:1.5rem;letter-spacing:-.01em}.brand span{color:var(--yellow)}
+header h1{margin:10px 0 4px;font-size:1.7rem;line-height:1.2}
+header p{margin:0;color:#cdd8f5;max-width:60ch}
+main{padding:20px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 18px;padding:20px}
+h2{margin:0 0 4px;font-size:1.15rem}
+.sub{margin:0 0 14px;color:var(--mute);font-size:.93rem}
+.price{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:700;border-radius:6px;padding:2px 10px;font-size:.9rem;margin:4px 0 12px}
+ul.facts{margin:0 0 14px;padding-left:18px;color:var(--mute);font-size:.93rem}
+label.f{display:block;font-weight:500;font-size:.92rem;margin:0 0 12px}
+input[type=text],input[type=email],input[type=tel],input[type=date]{display:block;width:100%;margin-top:4px;padding:10px 12px;border:1px solid var(--line);border-radius:6px;font:inherit;background:#fff;color:var(--ink)}
+input:focus-visible,button:focus-visible{outline:3px solid #6f93ff;outline-offset:1px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:6px;margin:0 0 8px;cursor:pointer;background:#fff}
+.chk:has(input:checked){border-color:var(--navy);background:#eef3ff}
+.chk input{margin-top:4px;accent-color:var(--navy)}
+.chk .r{margin-left:auto;color:var(--mute);white-space:nowrap}
+.datebox{margin:0 0 10px}
+.slots{margin:0 0 4px 14px;padding-left:12px;border-left:3px solid var(--yellow)}
+.brk{padding:5px 12px;margin:0 0 8px;background:#eceff6;border-radius:6px;color:var(--mute);font-size:.88rem}
+.fixed{background:#eef3ff;border:1px solid var(--navy);border-radius:6px;padding:10px 12px;margin:0 0 12px;font-weight:500}
+h3{font-size:.95rem;margin:14px 0 8px}
+.total{position:sticky;bottom:0;background:var(--navy-d);color:#fff;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;z-index:5}
+.total b{font-size:1.25rem;color:var(--yellow)}
+.total small{color:#cdd8f5;display:block}
+button.go{background:var(--yellow);color:var(--ink);border:0;border-radius:6px;font:inherit;font-weight:800;padding:12px 22px;cursor:pointer}
+button.go:disabled{opacity:.6;cursor:wait}
+#msg{margin:0 0 18px;padding:12px 14px;border-radius:8px;display:none;font-weight:500}
+#msg.err{display:block;background:#fdecea;color:var(--err);border:1px solid #f2b8b5}
+#msg.ok{display:block;background:#e6f4ea;color:var(--ok);border:1px solid #a8d5b5}
+.note{font-size:.85rem;color:var(--mute)}
+.addr{display:block;font-weight:400;font-size:.88rem;color:var(--mute);margin-top:2px}
+.addr a{color:var(--navy);font-weight:500}
+.clr{background:none;border:0;color:var(--navy);font:inherit;font-size:.88rem;text-decoration:underline;cursor:pointer;padding:2px 0;margin:0 0 10px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand">mega<span>kulim</span> pharmacy</div>
+  <h1>MK Learning Hub 2027 – Booking Form</h1>
+  <p>Select the training activities you would like to book. You can complete one section or several. Mega Kulim Pharmacy will confirm all details after you submit.</p>
+</div></header>
+
+<main><div class="wrap">
+<p class="note">Note: We do not allow any physical training longer than 10 minutes at any outlet. Salespeople may provide training or reading materials to HQ, and we will distribute them to all outlets on your behalf. All activity details will be confirmed later.</p>
+
+<form id="f" novalidate>
+
+<section>
+  <h2>Your details</h2>
+  <p class="sub">All fields are required.</p>
+  <div class="grid">
+    <label class="f">Company name (invoice to)<input type="text" name="company" required autocomplete="organization"></label>
+    <label class="f">Person-in-charge name<input type="text" name="pic" required autocomplete="name"></label>
+    <label class="f">Designation<input type="text" name="designation" required autocomplete="organization-title"></label>
+    <label class="f">Contact number<input type="tel" name="phone" required autocomplete="tel"></label>
+  </div>
+  <label class="f">Email<input type="email" name="email" required autocomplete="email"></label>
+  <h3>Payment method</h3>
+  <label class="chk"><input type="radio" name="payment" value="CN"> Credit note (CN)</label>
+  <label class="chk"><input type="radio" name="payment" value="Online Banking"> Online banking</label>
+</section>
+
+<section>
+  <h2>23) D &amp; N physical workshop (one-day event)</h2>
+  <div class="price">RM4,200 per slot of training + Q&amp;A</div>
+  <ul class="facts">
+    <li>Audience: dietitian, nutritionist, health advisory pharmacist executive, supervisor and pharmacist assistant</li>
+    <li>In-depth workshops with practical demonstration on specialised topics</li>
+    <li>Venue is shown under each date. Facilities and moderator provided by Mega Kulim Pharmacy</li>
+    <li>Minimum participation: 40 pax per day</li>
+  </ul>
+  <h3>Choose a date, then your slots</h3>
+  <div id="dn"></div>
+</section>
+
+<section>
+  <h2>24) Pharmacist CME physical workshop (one-day event)</h2>
+  <div class="price">RM5,000 per slot of training + Q&amp;A</div>
+  <ul class="facts">
+    <li>Audience: FRP and PRP</li>
+    <li>In-depth workshops with practical demonstration on specialised topics</li>
+    <li>Venue is shown under each date. Facilities and moderator provided by Mega Kulim Pharmacy</li>
+    <li>Minimum participation: 40 pax per day</li>
+  </ul>
+  <h3>Choose a date, then your slots</h3>
+  <div id="cme"></div>
+</section>
+
+<section>
+  <h2>25) Live webinar training</h2>
+  <p class="sub">40 mins (30 mins presentation + 10 mins Q&amp;A) on Zoom or a similar platform. Minimum participation: 50 pax per session.</p>
+  <h3>Training for</h3>
+  <label class="chk"><input type="radio" name="wcat" value="Pharmacist" data-p="2000"> Pharmacist <span class="r">RM2,000</span></label>
+  <label class="chk"><input type="radio" name="wcat" value="Dietitian / nutritionist / health advisor / pharmacist assistant" data-p="1500"> Dietitian, nutritionist, health advisor, pharmacist assistant <span class="r">RM1,500</span></label>
+  <button type="button" class="clr" data-clear="wcat">Clear selection</button>
+  <div class="grid"><label class="f">Training date<input type="date" name="wdate"></label></div>
+  <h3>Training time</h3>
+  <label class="chk"><input type="radio" name="wtime" value="2:30pm – 3:30pm"> 2:30pm – 3:30pm</label>
+  <label class="chk"><input type="radio" name="wtime" value="3:00pm – 4:00pm"> 3:00pm – 4:00pm</label>
+  <label class="chk"><input type="radio" name="wtime" value="3:30pm – 4:30pm"> 3:30pm – 4:30pm</label>
+  <button type="button" class="clr" data-clear="wtime">Clear selection</button>
+  <h3>Webinar platform</h3>
+  <label class="chk"><input type="radio" name="wplat" value="Supplier's own platform"><span><b>Use our own webinar platform</b><span class="addr">Please send the Zoom link and details to <a href="mailto:liuchiew@megakulim.com.my">liuchiew@megakulim.com.my</a> at least 2 weeks before the training.</span></span></label>
+  <label class="chk"><input type="radio" name="wplat" value="Mega Kulim platform"><span><b>Use the Mega Kulim platform</b><span class="addr">Mega Kulim Pharmacy will email you the virtual link and details at least 2 weeks before the training.</span></span></label>
+  <div id="wemailbox" hidden><label class="f">Email address to receive the virtual link<input type="email" name="wemail" autocomplete="email"></label></div>
+  <button type="button" class="clr" data-clear="wplat">Clear selection</button>
+</section>
+
+<section>
+  <h2>26) In-store face-to-face training</h2>
+  <div class="price">RM1,500 per session</div>
+  <ul class="facts">
+    <li>In-person session at an MK training centre: 30 mins presentation + 10 mins Q&amp;A (40 mins in total)</li>
+    <li>Includes lunch and transport cost for participants</li>
+    <li>Facilities and moderator provided by Mega Kulim Pharmacy</li>
+    <li>Minimum participation: 15 pax per session</li>
+    <li>You may choose more than one location</li>
+  </ul>
+  <div class="fixed">Training time: 1:00pm – 2:00pm</div>
+  <h3>Training centre location</h3>
+  <label class="chk"><input type="checkbox" name="loc" value="Taman Semarak, Kulim"><span><b>Taman Semarak, Kulim</b><span class="addr">18, Jln Selasih, Taman Semarak, 09000 Kulim, Kedah<br><a href="https://maps.app.goo.gl/3ZYYhi8spYXMBPqX8" target="_blank" rel="noopener">View on Google Maps</a></span></span></label>
+  <label class="chk"><input type="checkbox" name="loc" value="Lagenda Height, Sungai Petani"><span><b>Lagenda Height, Sungai Petani</b><span class="addr">151 &amp; 152, Jalan Legenda 6, Lagenda Heights, 08000 Sungai Petani, Kedah<br><a href="https://maps.app.goo.gl/pfoyoP2uivPoyfiH8" target="_blank" rel="noopener">View on Google Maps</a></span></span></label>
+  <label class="chk"><input type="checkbox" name="loc" value="Jalan Tengah, Bayan Baru"><span><b>Jalan Tengah, Bayan Baru</b><span class="addr">42 &amp; 44, Jalan Tengah, Bayan Baru, 11950 Bayan Lepas, Pulau Pinang<br><a href="https://maps.app.goo.gl/694CzD9CupwUdNZh9" target="_blank" rel="noopener">View on Google Maps</a></span></span></label>
+  <div class="grid"><label class="f">Training date<input type="date" name="idate"></label></div>
+</section>
+
+<section>
+  <h2>27) e-Learn 15 mins</h2>
+  <p class="sub">A quick, self-paced online module: 10-minute video + 5-minute MCQ assessment. Minimum participation: 300 pax.</p>
+  <label class="chk"><input type="radio" name="el" value="1" data-p="1500"> 1 slot <span class="r">RM1,500</span></label>
+  <label class="chk"><input type="radio" name="el" value="2" data-p="1300"> 2 slots <span class="r">RM1,300 each</span></label>
+  <label class="chk"><input type="radio" name="el" value="3" data-p="1200"> 3 slots <span class="r">RM1,200 each</span></label>
+  <button type="button" class="clr" data-clear="el">Clear selection</button>
+</section>
+
+<section>
+  <h2>Confirm and sign</h2>
+  <label class="f">Type your full name as signature<input type="text" name="signature" required></label>
+  <label class="chk"><input type="checkbox" name="agree"> I confirm the details above are correct and I am authorised to book on behalf of the company.</label>
+  <p class="note">Mega Kulim Pharmacy will confirm all activity details with you after submission.</p>
+</section>
+
+<div id="msg" role="alert"></div>
+</form>
+</div></main>
+
+<div class="total"><div><small>Estimated total</small><b id="tot">RM0</b></div><button class="go" id="send" type="button">Submit booking</button></div>
+
+<script>
+// Paste your deployed Apps Script web app URL here (see Code.gs setup steps)
+const SCRIPT_URL = "PASTE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+const SLOTS=[["Slot 1","9:00am – 10:00am"],["Morning Break","10:00am – 10:30am",1],["Slot 2","10:30am – 11:30am"],["Slot 3","11:30am – 12:30pm"],["Lunch Break","12:30pm – 1:30pm",1],["Slot 4","1:30pm – 2:30pm"],["Slot 5","2:30pm – 3:30pm"],["Tea Break","3:30pm – 4:00pm",1],["Slot 6","4:00pm – 5:00pm"],["Slot 7","5:00pm – 6:00pm"]];
+const MAP="https://maps.app.goo.gl/S9kJbu7XmY1s2mmJ8", CP="Crowne Plaza Penang Straits City";
+const WS={dn:{price:4200,dates:[["20/01/2027 (Wednesday)",CP,MAP],["17/06/2027 (Thursday)",CP,MAP]]},
+          cme:{price:5000,dates:[["17/04/2027 (Saturday)","KIV (to be confirmed)",""],["22/08/2027 (Sunday)",CP,MAP],["16/10/2027 (Saturday)",CP,MAP]]}};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const rm=n=>"RM"+n.toLocaleString("en-MY");
+
+Object.entries(WS).forEach(([id,cfg])=>{
+  const host=$("#"+id);
+  cfg.dates.forEach(d=>{
+    const box=document.createElement("div");box.className="datebox";
+    box.innerHTML=`<label class="chk"><input type="checkbox" data-date="${d[0]}" data-venue="${d[1]}"><span><b>${d[0]}</b><span class="addr">Venue: ${d[1]}${d[2]?`<br><a href="${d[2]}" target="_blank" rel="noopener">View on Google Maps</a>`:""}</span></span></label>
+    <div class="slots" hidden>${SLOTS.map(([n,t,b])=>b?`<div class="brk">${n}: ${t}</div>`:`<label class="chk"><input type="checkbox" data-slot="${n}"> ${n}: ${t}</label>`).join("")}</div>`;
+    host.appendChild(box);
+    box.querySelector("[data-date]").addEventListener("change",e=>{
+      box.querySelector(".slots").hidden=!e.target.checked;
+      if(!e.target.checked)box.querySelectorAll("[data-slot]").forEach(c=>c.checked=false);
+      calc();
+    });
+  });
+});
+
+const pickWs=id=>$$("#"+id+" .datebox").filter(b=>b.querySelector("[data-date]").checked)
+  .map(b=>({date:b.querySelector("[data-date]").dataset.date,venue:b.querySelector("[data-date]").dataset.venue,slots:[...b.querySelectorAll("[data-slot]:checked")].map(c=>c.dataset.slot+" ("+SLOTS.find(s=>s[0]===c.dataset.slot)[1]+")")}));
+const val=n=>{const e=$(`[name="${n}"]:checked`);return e?e.value:""};
+const price=n=>{const e=$(`[name="${n}"]:checked`);return e?+e.dataset.p:0};
+
+function calc(){
+  let t=0;
+  Object.entries(WS).forEach(([id,c])=>pickWs(id).forEach(d=>t+=d.slots.length*c.price));
+  t+=price("wcat");
+  t+=$$('[name="loc"]:checked').length*1500;
+  t+=price("el")*(+val("el")||0);
+  $("#tot").textContent=rm(t);return t;
+}
+const syncPlat=()=>{$("#wemailbox").hidden=val("wplat")!=="Mega Kulim platform"};
+document.addEventListener("change",()=>{calc();syncPlat()});
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-clear]");if(!b)return;
+  $$(`[name="${b.dataset.clear}"]`).forEach(r=>r.checked=false);calc();syncPlat();
+});
+
+function show(type,text){const m=$("#msg");m.className=type;m.textContent=text;m.scrollIntoView({behavior:"smooth",block:"center"})}
+
+$("#send").addEventListener("click",async()=>{
+  const f=$("#f"),g=n=>f.elements[n].value.trim();
+  for(const n of ["company","pic","designation","phone","email","signature"])
+    if(!g(n)){f.elements[n].focus();return show("err","Please fill in all your details and sign with your full name.")}
+  if(!/^\S+@\S+\.\S+$/.test(g("email"))){f.elements.email.focus();return show("err","Please enter a valid email address.")}
+  if(!val("payment"))return show("err","Please choose a payment method.");
+
+  const dn=pickWs("dn"),cme=pickWs("cme"),locs=$$('[name="loc"]:checked').map(c=>c.value);
+  for(const [name,list] of [["D & N workshop",dn],["Pharmacist CME workshop",cme]])
+    if(list.some(d=>!d.slots.length))return show("err",`${name}: choose at least one slot for each date you selected.`);
+  if(val("wcat")&&(!g("wdate")||!val("wtime")||!val("wplat")))return show("err","Live webinar: choose a training date, time and webinar platform.");
+  if(val("wplat")==="Mega Kulim platform"&&!/^\S+@\S+\.\S+$/.test(g("wemail"))){f.elements.wemail.focus();return show("err","Live webinar: enter the email address where we should send the virtual link.")}
+  if(!val("wcat")&&(g("wdate")||val("wtime")||val("wplat")))return show("err","Live webinar: choose who the training is for.");
+  if(locs.length&&!g("idate"))return show("err","In-store training: choose a training date.");
+  if(!locs.length&&g("idate"))return show("err","In-store training: choose at least one location.");
+
+  const fmt=l=>l.map(d=>d.date+" @ "+d.venue+": "+d.slots.join(", ")).join(" | ");
+  const total=calc();
+  if(!total)return show("err","Select at least one activity before submitting.");
+  if(!f.elements.agree.checked)return show("err","Please tick the confirmation box.");
+
+  const ref="LH-"+new Date().toISOString().slice(2,10).replace(/-/g,"")+"-"+Math.random().toString(36).slice(2,6).toUpperCase();
+  const p={ref,company:g("company"),pic:g("pic"),designation:g("designation"),phone:g("phone"),email:g("email"),
+    payment:val("payment"),dn:fmt(dn),cme:fmt(cme),
+    webinar:val("wcat")?`${val("wcat")} | ${g("wdate")} | ${val("wtime")} | ${val("wplat")}${val("wplat")==="Mega Kulim platform"?" | Link email: "+g("wemail"):""}`:"",
+    instore:locs.length?`${locs.join(", ")} | ${g("idate")} | 1:00pm – 2:00pm`:"",
+    elearn:val("el")?`${val("el")} slot(s) @ ${rm(price("el"))}`:"",
+    total:rm(total),signature:g("signature")};
+
+  if(SCRIPT_URL.startsWith("PASTE"))return show("err","This form is not connected yet. Add the Apps Script web app URL in index.html.");
+  const b=$("#send");b.disabled=true;b.textContent="Submitting…";
+  try{
+    await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)});
+    show("ok",`Booking submitted. Your reference is ${ref}. Mega Kulim Pharmacy will be in touch to confirm the details.`);
+    b.textContent="Submitted";
+  }catch(e){
+    b.disabled=false;b.textContent="Submit booking";
+    show("err","Could not submit. Check your connection and try again.");
+  }
+});
+</script>
+</body>
+</html>
